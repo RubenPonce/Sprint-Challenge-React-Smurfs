@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
-
-class SmurfForm extends Component {
+import React, { PureComponent } from 'react';
+import axios from 'axios';
+import {Link} from 'react-router-dom';
+class SmurfForm extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -8,12 +9,12 @@ class SmurfForm extends Component {
       age: '',
       height: ''
     };
+    console.log(props)
   }
 
   addSmurf = event => {
-    event.preventDefault();
-    // add code to create the smurf using the api
-
+    event.preventDefault()
+    this.props.addSmurf({...this.state})
     this.setState({
       name: '',
       age: '',
@@ -28,6 +29,7 @@ class SmurfForm extends Component {
   render() {
     return (
       <div className="SmurfForm">
+      
         <form onSubmit={this.addSmurf}>
           <input
             onChange={this.handleInputChange}
