@@ -13,12 +13,8 @@ class SmurfForm extends PureComponent {
   }
 
   addSmurf = event => {
-    event.preventDefault();
-    axios.post('http://localhost:3333/smurfs',{...this.state})
-    .then(res=>{
-      console.log(res)
-    })
-    .catch(err=>console.log(err));
+    event.preventDefault()
+    this.props.addSmurf({...this.state})
     this.setState({
       name: '',
       age: '',

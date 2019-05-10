@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios'
+import axios from 'axios';
 import './App.css';
 import SmurfForm from './components/SmurfForm';
 import Smurfs from './components/Smurfs';
@@ -25,9 +25,29 @@ class App extends Component {
     .catch(err=>console.log(err));
   }
 
+  addSmurf = (smurf)=> {
+    console.log(smurf)
+    axios.post('http://localhost:3333/smurfs',smurf)
+    .then(res=>{
+      console.log(res)
+      this.setState({
+        smurfs: [...res.data]
+      })
+    })
+    .catch(err=>console.log(err));
+  }
 
-
-
+  updateSmurf = (id,smurf)=>{
+    console.log(smurf)
+    console.log(id);
+    axios.put(`http://localhost:3333/smurfs/${id}`,{...smurf})
+      .then(res=>{
+        this.setState({
+          smurfs: [...res.data]
+        })
+      })
+      .catch(err=> console.log(err));
+  }
   
   render() {
     return (
@@ -36,8 +56,8 @@ class App extends Component {
       <Route component={Navigation}/>
       
       
-      <Route exact path="/" render={(props)=><Smurfs {...props} smurfs={this.state.smurfs} />}/>
-       <Route path="/smurf-form" component={SmurfForm}/>
+      <Route exact path="/" render={(props)=><Smurfs {...props} updateSmurf = {this.updateSmurf} smurfs={this.state.smurfs} resetState={this.resetState}/>}/>
+       <Route path="/smurf-form" render={(props)=><SmurfForm addSmurf={this.addSmurf}/>}/>
         
        
       </div>

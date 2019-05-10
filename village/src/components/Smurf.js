@@ -8,7 +8,6 @@ class Smurf extends React.Component {
       name: "",
       height: "",
       age: "",
-      toggleEdit: false
     };
     
   }
@@ -20,18 +19,16 @@ class Smurf extends React.Component {
   
   formSubmit = e => {
     e.preventDefault();
-      axios.put(`http://localhost:3333/smurfs/${this.props.id}`,{...this.state})
+    this.props.updateSmurf(this.props.id, {...this.state})
+    axios.put(`http://localhost:3333/smurfs/${this.props.id}`,{...this.state})
       .then(res=>{
-        console.log(res)
+
       })
       .catch(err=> console.log(err));
-   
-   
     this.setState({
       name: "",
       height: "",
       age: "",
-      toggleEdit: !this.state.toggleEdit
     });
   };
 
