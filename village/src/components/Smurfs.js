@@ -5,13 +5,6 @@ class Smurfs extends Component {
 
   
  
-  deleteSmurf = (e,id)=>{
-    console.log(id)
-    axios.delete(`http://localhost:3333/smurfs/${id}`)
-    .then(res=>console.log(res))
-    .catch(err=>console.log(err))
-      
-  }
 
   render() {
     return (
@@ -27,7 +20,7 @@ class Smurfs extends Component {
                 age={smurf.age}
                 height={smurf.height}
                 key={smurf.id}
-                deleteSmurf={this.deleteSmurf}
+                deleteSmurf={this.props.deleteSmurf}
                 updateSmurf={this.props.updateSmurf}
               />
             );
