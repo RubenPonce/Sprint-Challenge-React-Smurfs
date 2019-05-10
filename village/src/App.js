@@ -65,11 +65,11 @@ class App extends Component {
     return (
       <Router>
       <div className="App">
-      <Route component={Navigation}/>
+      <Navigation/>
       
       
       <Route exact path="/" render={(props)=><Smurfs {...props} updateSmurf = {this.updateSmurf} deleteSmurf={this.deleteSmurf} smurfs={this.state.smurfs} />}/>
-       <Route path="/smurf-form" render={()=><SmurfForm addSmurf={this.addSmurf}/>}/>
+       <Route  path="/smurf-form" render={()=><SmurfForm addSmurf={this.addSmurf}/>}/>
         
        
       </div>
