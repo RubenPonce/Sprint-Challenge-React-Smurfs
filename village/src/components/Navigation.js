@@ -1,11 +1,11 @@
 import React from 'react'
-import {NavLink} from 'react-router-dom';
-export default function Navigation() {
-  return (
+import {Link} from 'react-router-dom';
+export default class Navigation extends React.PureComponent {
+  render(){
+      return (
     <div>
-    <NavLink exact to="/"> Smurfs</NavLink>
-      <NavLink to="/smurf-form">Add smurf</NavLink>
-      
+    <Link to="/"> Smurfs</Link>
+      <Link to="/smurf-form">Add smurf</Link>
     </div>
-  )
+  )}
 }

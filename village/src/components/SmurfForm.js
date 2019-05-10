@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-class SmurfForm extends Component {
+class SmurfForm extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -9,12 +9,15 @@ class SmurfForm extends Component {
       age: '',
       height: ''
     };
+    console.log(props)
   }
 
   addSmurf = event => {
     event.preventDefault();
     axios.post('http://localhost:3333/smurfs',{...this.state})
-    .then(res=>console.log(res))
+    .then(res=>{
+      console.log(res)
+    })
     .catch(err=>console.log(err));
     this.setState({
       name: '',
